@@ -1,7 +1,18 @@
 FROM runmymind/docker-android-sdk
 
 RUN apt-get update -yqq && \
+    apt-get install -y libnss-wrapper && \
+    apt-get clean
+
+# copy some command aliases that need to be early on the path
+COPY tools/* /usr/local/sbin/
+RUN chmod a+x /usr/local/sbin/run_as_user && \
+    chmod a+x /usr/local/sbin/ssh && \
+    chmod a+x /usr/local/sbin/rsync
+
+RUN apt-get update -yqq && \
     apt-get install -y \
+    apksigner \
     fdroidserver && \
     apt-get clean
 
