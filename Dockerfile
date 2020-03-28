@@ -1,5 +1,7 @@
 FROM runmymind/docker-android-sdk
 
+ENV PATH="/opt/android-sdk-linux/build-tools/28.0.3:${PATH}"
+
 RUN apt-get update -yqq && \
     apt-get install -y libnss-wrapper && \
     apt-get clean
@@ -12,7 +14,6 @@ RUN chmod a+x /usr/local/sbin/run_as_user && \
 
 RUN apt-get update -yqq && \
     apt-get install -y \
-    apksigner \
     fdroidserver && \
     apt-get clean
 
