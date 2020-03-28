@@ -9,6 +9,4 @@ dockerhub: [cs8898/android-fdroid-sdk](https://hub.docker.com/repository/docker/
 * AndroidSDK from [runmymind/docker-android-sdk](https://hub.docker.com/repository/docker/runmymind/docker-android-sdk)  
 * F-Droid installed from PackageManager
 
-## ⚠️ SDK Root is World Writeable ⚠️
-
 Works with Jenkins and other Docker Enabled CI

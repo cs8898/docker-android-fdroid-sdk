@@ -1,7 +1,5 @@
 FROM runmymind/docker-android-sdk
 
-RUN chmod o+rw /opt/android-sdk-linux
-
 RUN apt-get update -yqq && \
     apt-get install -y \
     fdroidserver && \
