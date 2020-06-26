@@ -1,6 +1,8 @@
 FROM runmymind/docker-android-sdk
 
-ENV PATH="/opt/android-sdk-linux/build-tools/28.0.3:${PATH}"
+ARG BUILD_TOOLS_VERSION=29.0.2
+
+ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
 RUN apt-get update -yqq && \
     apt-get install -y libnss-wrapper && \
@@ -24,6 +26,3 @@ RUN cd /usr/share/doc/fdroidserver/examples && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/opensc-fdroid.cfg && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/public-read-only-s3-bucket-policy.json && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/template.yml
-
-RUN cd $ANDROID_SDK_HOME && \
-    chmod -R o+rw .
