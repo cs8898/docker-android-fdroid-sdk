@@ -24,3 +24,6 @@ RUN cd /usr/share/doc/fdroidserver/examples && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/opensc-fdroid.cfg && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/public-read-only-s3-bucket-policy.json && \
     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/template.yml
+
+RUN cd $ANDROID_SDK_HOME && \
+    chmod -R o+rw .
