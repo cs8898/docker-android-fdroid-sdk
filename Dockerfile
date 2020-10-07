@@ -1,6 +1,6 @@
 FROM runmymind/docker-android-sdk
 
-ARG BUILD_TOOLS_VERSION=30.0.2
+ARG BUILD_TOOLS_VERSION=29.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
