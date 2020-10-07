@@ -1,4 +1,4 @@
-FROM runmymind/docker-android-sdk
+FROM runmymind/docker-android-sdk:latest
 
 ARG BUILD_TOOLS_VERSION=29.0.2
 
