@@ -4,6 +4,8 @@ ARG BUILD_TOOLS_VERSION=29.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
+RUN chmod -R g+rw /opt/android-sdk-linux
+
 RUN apt-get update -yqq && \
     apt-get install -y libnss-wrapper && \
     apt-get clean
