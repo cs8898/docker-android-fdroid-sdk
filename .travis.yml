@@ -1,3 +1,5 @@
+language: shell
+
 env:
   global:
     - CONTAINER_NAME=cs8898/android-fdroid-sdk
