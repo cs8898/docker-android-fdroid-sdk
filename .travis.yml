@@ -1,0 +1,16 @@
+env:
+  global:
+    - CONTAINER_NAME=cs8898/android-fdroid-sdk
+    - CONTAINER_TAG=latest
+
+services:
+  - docker
+
+script:
+  docker build -t $CONTAINER_NAME:$CONTAINER_TAG .
+
+deploy:
+  provider: script
+  script: bash ./.travis/docker_push.sh
+  on:
+    branch: master
