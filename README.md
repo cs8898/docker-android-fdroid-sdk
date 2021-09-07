@@ -1,6 +1,7 @@
 # docker-android-fdroid-sdk
 
-[![docker build](https://img.shields.io/docker/cloud/build/cs8898/android-fdroid-sdk)](https://hub.docker.com/r/cs8898/android-fdroid-sdk)  
+[![docker build](https://img.shields.io/docker/cloud/build/cs8898/android-fdroid-sdk)](https://hub.docker.com/r/cs8898/android-fdroid-sdk) [![travis build](https://api.travis-ci.com/cs8898/docker-android-fdroid-sdk.svg)](https://app.travis-ci.com/github/cs8898/docker-android-fdroid-sdk)
+
 dockerhub: [cs8898/android-fdroid-sdk](https://hub.docker.com/r/cs8898/android-fdroid-sdk)
 
 ## Android SDK plus F-Droid Server Tools
