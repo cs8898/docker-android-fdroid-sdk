@@ -4,8 +4,6 @@ ARG BUILD_TOOLS_VERSION=30.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
-RUN chmod -R g+rw /opt/android-sdk-linux
-
 RUN apt-get update -yqq && \
     apt-get install -y libnss-wrapper && \
     apt-get clean
@@ -18,14 +16,18 @@ RUN chmod a+x /usr/local/sbin/run_as_user && \
 
 # copy some command aliases that need to be early on the path
 COPY mypackagelist /opt/mypackagelist
-
 RUN /opt/mypackagelist/install-packages.sh
 
+# install fdroid
 RUN apt-get update -yqq && \
     apt-get install -y \
     fdroidserver && \
     apt-get clean
 
+# Workaround for non writeable SDK FOLDER
+RUN chmod -R g+rw /opt/android-sdk-linux
+
+## Old Workaround for Missing template files...
 # RUN cd /usr/share/doc/fdroidserver/examples && \
 #     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/config.py && \
 #     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/fdroid-icon.png && \
