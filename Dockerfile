@@ -1,6 +1,6 @@
-FROM runmymind/docker-android-sdk
+FROM runmymind/docker-android-sdk:latest
 
-ARG BUILD_TOOLS_VERSION=29.0.2
+ARG BUILD_TOOLS_VERSION=30.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
@@ -13,6 +13,11 @@ COPY tools/* /usr/local/sbin/
 RUN chmod a+x /usr/local/sbin/run_as_user && \
     chmod a+x /usr/local/sbin/ssh && \
     chmod a+x /usr/local/sbin/rsync
+
+# copy some command aliases that need to be early on the path
+COPY mypackagelist /opt/mypackagelist
+
+RUN /opt/mypackagelist/install-packages.sh
 
 RUN apt-get update -yqq && \
     apt-get install -y \

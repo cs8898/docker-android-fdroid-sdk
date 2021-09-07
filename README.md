@@ -19,8 +19,12 @@ Current Build has Following Build Tools and Platforms:
 | ----------- | ---------- |
 | build-tools | 28.0.3     |
 | build-tools | 29.0.2     |
+| build-tools | 30.0.2     |
 | platforms   | android-28 |
 | platforms   | android-29 |
+| platforms   | android-30 |
 
-Build-Tools currently added to PATH `29.0.2`
+Compare `/mypackagelist/package-list.txt` and [package-list-minimal.txt](https://github.com/mindrunner/docker-android-sdk/blob/master/tools/package-list-minimal.txt)
+
+Build-Tools currently added to PATH `30.0.2`
 (Needed for FDroid)
