@@ -4,6 +4,8 @@ ARG BUILD_TOOLS_VERSION=30.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
+RUN chmod -R g+rw /opt/android-sdk-linux
+
 RUN apt-get update -yqq && \
     apt-get install -y libnss-wrapper && \
     apt-get clean
@@ -24,10 +26,10 @@ RUN apt-get update -yqq && \
     fdroidserver && \
     apt-get clean
 
-RUN cd /usr/share/doc/fdroidserver/examples && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/config.py && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/fdroid-icon.png && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/makebuildserver.config.py && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/opensc-fdroid.cfg && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/public-read-only-s3-bucket-policy.json && \
-    wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/template.yml
+# RUN cd /usr/share/doc/fdroidserver/examples && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/config.py && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/fdroid-icon.png && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/makebuildserver.config.py && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/opensc-fdroid.cfg && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/public-read-only-s3-bucket-policy.json && \
+#     wget https://raw.githubusercontent.com/f-droid/fdroidserver/master/examples/template.yml
