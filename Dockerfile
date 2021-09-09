@@ -14,22 +14,23 @@ RUN chmod a+x /usr/local/sbin/run_as_user && \
     chmod a+x /usr/local/sbin/ssh && \
     chmod a+x /usr/local/sbin/rsync
 
-# copy some command aliases that need to be early on the path
+# install my SDK Packages
 COPY mypackagelist /opt/mypackagelist
 RUN /opt/mypackagelist/install-packages.sh
+
+# Workaround for non writeable SDK FOLDER
+RUN chmod -R g+rw /opt/android-sdk-linux
 
 # install python3 for fdroid server
 RUN apt-get update -yqq && \
     apt-get install -y \
-    python3 python3-pip && \
+    python3 python3-pip rsync && \
     apt-get clean
 
+# install the fdroidserver
 RUN python3 -m pip install --upgrade setuptools pip && \
     python3 -m pip install setuptools-rust && \
     python3 -m pip install fdroidserver
-
-# Workaround for non writeable SDK FOLDER
-RUN chmod -R g+rw /opt/android-sdk-linux
 
 ## Old Workaround for Missing template files...
 # RUN cd /usr/share/doc/fdroidserver/examples && \
