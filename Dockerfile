@@ -18,11 +18,13 @@ RUN chmod a+x /usr/local/sbin/run_as_user && \
 COPY mypackagelist /opt/mypackagelist
 RUN /opt/mypackagelist/install-packages.sh
 
-# install fdroid
+# install python3 for fdroid server
 RUN apt-get update -yqq && \
     apt-get install -y \
-    fdroidserver && \
+    python3 python3-pip && \
     apt-get clean
+
+RUN pip3 install fdroidserver
 
 # Workaround for non writeable SDK FOLDER
 RUN chmod -R g+rw /opt/android-sdk-linux
