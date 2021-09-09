@@ -4,10 +4,12 @@ ARG BUILD_TOOLS_VERSION=30.0.2
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
-RUN apt-get update -yqq && \
-    apt-get install -y \
-        libnss-wrapper && \
-    apt-get clean
+# install my SDK Packages
+COPY mypackagelist /opt/mypackagelist
+RUN /opt/mypackagelist/install-packages.sh
+
+# Workaround for non writeable SDK FOLDER
+RUN chmod -R g+rw /opt/android-sdk-linux
 
 # copy some command aliases that need to be early on the path
 COPY tools/* /usr/local/sbin/
@@ -15,12 +17,11 @@ RUN chmod a+x /usr/local/sbin/run_as_user && \
     chmod a+x /usr/local/sbin/ssh && \
     chmod a+x /usr/local/sbin/rsync
 
-# install my SDK Packages
-COPY mypackagelist /opt/mypackagelist
-RUN /opt/mypackagelist/install-packages.sh
-
-# Workaround for non writeable SDK FOLDER
-RUN chmod -R g+rw /opt/android-sdk-linux
+# install needed tools for helpers (see above)
+RUN apt-get update -yqq && \
+    apt-get install -y \
+        libnss-wrapper && \
+    apt-get clean
 
 # install packages for PIL
 # See:
