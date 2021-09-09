@@ -27,5 +27,5 @@ Current Build has Following Build Tools and Platforms:
 
 Compare `/mypackagelist/package-list.txt` and [package-list-minimal.txt](https://github.com/mindrunner/docker-android-sdk/blob/master/tools/package-list-minimal.txt)
 
-Build-Tools currently added to PATH `30.0.2`
+Build-Tools currently added to PATH `28.0.3`
 (Needed for FDroid)
