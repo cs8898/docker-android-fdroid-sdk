@@ -5,7 +5,8 @@ ARG BUILD_TOOLS_VERSION=30.0.2
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
 RUN apt-get update -yqq && \
-    apt-get install -y libnss-wrapper && \
+    apt-get install -y \
+        libnss-wrapper && \
     apt-get clean
 
 # copy some command aliases that need to be early on the path
@@ -28,7 +29,7 @@ RUN chmod -R g+rw /opt/android-sdk-linux
 RUN build=`uname --hardware-platform` && \
     apt-get update -yqq && \
     apt-get install -y \
-    apt-get install python-dev libjpeg62 libjpeg-dev libpng16-16 libpng-dev libfreetype6-dev libffi-dev && \
+        python-dev libjpeg62 libjpeg-dev libpng16-16 libpng-dev libfreetype6-dev libffi-dev && \
     ln -s /usr/lib/${build}-linux-gnu/libjpeg.so /usr/lib && \
     ln -s /usr/lib/${build}-linux-gnu/libz.so /usr/lib && \
     apt-get clean
@@ -36,7 +37,7 @@ RUN build=`uname --hardware-platform` && \
 # install python3 for fdroid server
 RUN apt-get update -yqq && \
     apt-get install -y \
-    python3 python3-pip rsync && \
+        python3 python3-pip rsync && \
     apt-get clean
 
 # install the fdroidserver
