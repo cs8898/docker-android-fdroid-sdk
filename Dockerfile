@@ -21,6 +21,18 @@ RUN /opt/mypackagelist/install-packages.sh
 # Workaround for non writeable SDK FOLDER
 RUN chmod -R g+rw /opt/android-sdk-linux
 
+# install packages for PIL
+# See:
+# - https://gitlab.com/fdroid/ci-images-base/-/blob/master/Dockerfile
+# - https://gist.github.com/azizmb/11343840
+RUN build=`uname --hardware-platform` && \
+    apt-get update -yqq && \
+    apt-get install -y \
+    apt-get install python-dev libjpeg62 libjpeg-dev libpng16-16 libpng-dev libfreetype6-dev libffi-dev && \
+    ln -s /usr/lib/${build}-linux-gnu/libjpeg.so /usr/lib && \
+    ln -s /usr/lib/${build}-linux-gnu/libz.so /usr/lib && \
+    apt-get clean
+
 # install python3 for fdroid server
 RUN apt-get update -yqq && \
     apt-get install -y \
