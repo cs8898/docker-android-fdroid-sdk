@@ -24,9 +24,9 @@ RUN apt-get update -yqq && \
     python3 python3-pip && \
     apt-get clean
 
-RUN pip3 install --upgrade setuptools pip && \
-    pip3 install setuptools-rust && \
-    pip3 install fdroidserver
+RUN python3 -m pip install --upgrade setuptools pip && \
+    python3 -m pip install setuptools-rust && \
+    python3 -m pip install fdroidserver
 
 # Workaround for non writeable SDK FOLDER
 RUN chmod -R g+rw /opt/android-sdk-linux
