@@ -24,7 +24,7 @@ RUN apt-get update -yqq && \
     python3 python3-pip && \
     apt-get clean
 
-RUN pip3 install --upgrade pip && \
+RUN pip3 install --upgrade setuptools pip && \
     pip3 install setuptools-rust && \
     pip3 install fdroidserver
 
