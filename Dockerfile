@@ -30,7 +30,7 @@ RUN apt-get update -yqq && \
 RUN build=`uname --hardware-platform` && \
     apt-get update -yqq && \
     apt-get install -y \
-        python-dev libjpeg62 libjpeg-dev libpng16-16 libpng-dev libfreetype6-dev libffi-dev && \
+        python2-dev python3-dev libjpeg62 libjpeg-dev libpng16-16 libpng-dev libfreetype6-dev libffi-dev && \
     ln -s /usr/lib/${build}-linux-gnu/libjpeg.so /usr/lib && \
     ln -s /usr/lib/${build}-linux-gnu/libz.so /usr/lib && \
     apt-get clean
