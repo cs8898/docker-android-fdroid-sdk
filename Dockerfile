@@ -5,7 +5,7 @@ ARG BUILD_TOOLS_VERSION=31.0.0
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
 # install BuildTools
-/opt/tools/android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${BUILD_TOOLS_VERSION}"
+RUN /opt/tools/android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${BUILD_TOOLS_VERSION}"
 
 # install my SDK Packages
 COPY mypackagelist /opt/mypackagelist
