@@ -20,6 +20,9 @@ jobs:
 services:
   - docker
 
+before_script:
+  bash ./.travis/docker_login.sh
+
 script:
   docker build --build-arg BUILD_TOOLS_VERSION=$BUILD_TOOLS_VERSION -t $CONTAINER_NAME:$CONTAINER_TAG .
 
@@ -28,3 +31,6 @@ deploy:
   script: bash ./.travis/docker_push.sh
   on:
     branch: master
+
+after_script:
+  docker logout
