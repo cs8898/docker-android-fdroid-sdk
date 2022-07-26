@@ -21,7 +21,7 @@ services:
   - docker
 
 script:
-  docker build -t $CONTAINER_NAME:$CONTAINER_TAG .
+  docker build --build-arg BUILD_TOOLS_VERSION=$BUILD_TOOLS_VERSION -t $CONTAINER_NAME:$CONTAINER_TAG .
 
 deploy:
   provider: script
