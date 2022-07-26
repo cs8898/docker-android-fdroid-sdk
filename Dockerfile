@@ -4,11 +4,9 @@ ARG BUILD_TOOLS_VERSION=31.0.0
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
-# install BuildTools
-RUN /opt/tools/android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${BUILD_TOOLS_VERSION}"
-
 # install my SDK Packages
 COPY mypackagelist /opt/mypackagelist
+RUN echo "build-tools;${BUILD_TOOLS_VERSION}" >> /opt/mypackagelist/package-list.txt
 RUN /opt/mypackagelist/install-packages.sh
 
 # Workaround for non writeable SDK FOLDER
