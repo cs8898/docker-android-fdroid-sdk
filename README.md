@@ -7,7 +7,7 @@ dockerhub: [cs8898/android-fdroid-sdk](https://hub.docker.com/r/cs8898/android-f
 ## Android SDK plus F-Droid Server Tools
 
 * Images is based on Ubuntu
-* AndroidSDK from [runmymind/docker-android-sdk](https://hub.docker.com/r/runmymind/docker-android-sdk)  
+* AndroidSDK from ~~[runmymind/docker-android-sdk](https://hub.docker.com/r/runmymind/docker-android-sdk)~~  [cs8898/docker-android-sdk](https://hub.docker.com/r/cs8898/docker-android-sdk)
 * F-Droid installed from PackageManager
 
 Works with Jenkins and other Docker Enabled CI
@@ -18,14 +18,18 @@ Current Build has Following Build Tools and Platforms:
 
 | PKG         | Version    |
 | ----------- | ---------- |
-| build-tools | 28.0.3     |
-| build-tools | 29.0.2     |
-| build-tools | 30.0.2     |
-| platforms   | android-28 |
-| platforms   | android-29 |
-| platforms   | android-30 |
+| build-tools | 31.0.0     |
+| build-tools | 30.0.3     |
+| platforms   | android-32 |
 
-Compare `/mypackagelist/package-list.txt` and [package-list-minimal.txt](https://github.com/mindrunner/docker-android-sdk/blob/master/tools/package-list-minimal.txt)
+Compare `/mypackagelist/package-list.txt` and [package-list-minimal.txt](https://github.com/cs8898/docker-android-sdk/blob/master/tools/package-list-minimal.txt)
 
-Build-Tools currently added to PATH `30.0.2`
+Build-Tools currently added to PATH `31.0.0`
 (Needed for FDroid)
+
+## Docker Tags
+
+Bild Matrix for `BUILD_TOOLS_VERSION`
+
+* `31.0.0` `latest`
+* `30.0.2`

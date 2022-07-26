@@ -4,7 +4,18 @@ dist: focal
 env:
   global:
     - CONTAINER_NAME=cs8898/android-fdroid-sdk
-    - CONTAINER_TAG=latest
+
+jobs:
+  include:
+    - env:
+      - BUILD_TOOLS_VERSION=31.0.0
+      - CONTAINER_TAG=latest
+    - env:
+      - BUILD_TOOLS_VERSION=31.0.0
+      - CONTAINER_TAG=31.0.0
+    - env:
+      - BUILD_TOOLS_VERSION=30.0.2
+      - CONTAINER_TAG=30.0.2
 
 services:
   - docker
