@@ -1,6 +1,6 @@
 FROM cs8898/docker-android-sdk:latest
 
-ARG BUILD_TOOLS_VERSION=31.0.0
+ARG BUILD_TOOLS_VERSION=33.0.0
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
