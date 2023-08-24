@@ -45,7 +45,7 @@ RUN apt-get update -yqq && \
 # install the fdroidserver
 RUN python3 -m pip install --upgrade setuptools pip && \
     python3 -m pip install setuptools-rust && \
-    python3 -m pip install fdroidserver
+    python3 -m pip install fdroidserver==2.2.1
 
 ## Old Workaround for Missing template files...
 # RUN cd /usr/share/doc/fdroidserver/examples && \
