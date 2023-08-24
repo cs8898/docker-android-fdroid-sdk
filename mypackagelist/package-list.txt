@@ -1,2 +1,1 @@
-build-tools;33.0.0
 platforms;android-33
