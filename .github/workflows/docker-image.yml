@@ -24,7 +24,7 @@ jobs:
           - BUILD_TOOLS_VERSION: "30.0.2"
             CONTAINER_TAG: "30.0.2"
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
