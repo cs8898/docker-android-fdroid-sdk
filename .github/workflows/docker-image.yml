@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - BUILD_TOOLS_VERSION: "33.0.0"
+          - BUILD_TOOLS_VERSION: "33.0.2"
             CONTAINER_TAG: "latest"
           - BUILD_TOOLS_VERSION: "33.0.0"
             CONTAINER_TAG: "33.0.0"
