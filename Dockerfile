@@ -1,7 +1,7 @@
 FROM cs8898/docker-android-sdk:latest
 
 ARG BUILD_TOOLS_VERSION=33.0.2
-ARG FDROID_SERVER_VERSION=2.2.1
+ARG FDROID_SERVER_PACKAGE=fdroidserver==2.2.1
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
@@ -46,7 +46,7 @@ RUN apt-get update -yqq && \
 # install the fdroidserver
 RUN python3 -m pip install --upgrade setuptools pip && \
     python3 -m pip install setuptools-rust && \
-    python3 -m pip install fdroidserver==${FDROID_SERVER_VERSION}
+    python3 -m pip install ${FDROID_SERVER_PACKAGE}
 
 ## Old Workaround for Missing template files...
 # RUN cd /usr/share/doc/fdroidserver/examples && \

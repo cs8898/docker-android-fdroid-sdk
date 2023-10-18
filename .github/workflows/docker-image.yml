@@ -16,12 +16,19 @@ jobs:
       matrix:
         include:
           - BUILD_TOOLS_VERSION: "33.0.2"
+            FDROID_SERVER_PACKAGE: "fdroidserver==2.2.1"
             CONTAINER_TAG: "latest"
+          - BUILD_TOOLS_VERSION: "33.0.2"
+            FDROID_SERVER_PACKAGE: "git+https://github.com/f-droid/fdroidserver.git@master"
+            CONTAINER_TAG: "edge"
           - BUILD_TOOLS_VERSION: "33.0.0"
+            FDROID_SERVER_PACKAGE: "fdroidserver==2.2.1"
             CONTAINER_TAG: "33.0.0"
           - BUILD_TOOLS_VERSION: "31.0.0"
+            FDROID_SERVER_PACKAGE: "fdroidserver==2.2.1"
             CONTAINER_TAG: "31.0.0"
           - BUILD_TOOLS_VERSION: "30.0.2"
+            FDROID_SERVER_PACKAGE: "fdroidserver==2.2.1"
             CONTAINER_TAG: "30.0.2"
     steps:
     - uses: actions/checkout@v3
@@ -32,6 +39,6 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build --build-arg BUILD_TOOLS_VERSION=${{ matrix.BUILD_TOOLS_VERSION }} -t $CONTAINER_NAME:${{ matrix.CONTAINER_TAG }} .
+      run: docker build --build-arg BUILD_TOOLS_VERSION=${{ matrix.BUILD_TOOLS_VERSION }} --build-arg FDROID_SERVER_PACKAGE=${{ matrix.FDROID_SERVER_PACKAGE }} -t $CONTAINER_NAME:${{ matrix.CONTAINER_TAG }} .
     - name: Docker Push
       run: docker push $CONTAINER_NAME:${{ matrix.CONTAINER_TAG }}
