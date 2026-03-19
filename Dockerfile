@@ -40,13 +40,14 @@ RUN build=`uname --hardware-platform` && \
 # install python3 for fdroid server
 RUN apt-get update -yqq && \
     apt-get install -y \
-        python3 python3-pip rsync && \
+        python3 python3-pip python3-full python3-setuptools python3-setuptools-rust rsync pipx && \
     apt-get clean
 
+USER 1000
+ENV PATH="/opt/android-sdk-linux/.local/bin:$PATH"
 # install the fdroidserver
-RUN python3 -m pip install --upgrade setuptools pip && \
-    python3 -m pip install setuptools-rust && \
-    python3 -m pip install ${FDROID_SERVER_PACKAGE}
+RUN pipx install ${FDROID_SERVER_PACKAGE} && \
+    fdroid --help
 
 ## Old Workaround for Missing template files...
 # RUN cd /usr/share/doc/fdroidserver/examples && \
