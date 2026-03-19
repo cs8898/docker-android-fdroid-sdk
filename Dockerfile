@@ -1,7 +1,7 @@
 FROM cs8898/docker-android-sdk:latest
 
 ARG BUILD_TOOLS_VERSION=33.0.2
-ARG FDROID_SERVER_PACKAGE=fdroidserver==2.4.0
+ARG FDROID_SERVER_PACKAGE=fdroidserver==2.4.3
 
 ENV PATH="/opt/android-sdk-linux/build-tools/${BUILD_TOOLS_VERSION}:${PATH}"
 
